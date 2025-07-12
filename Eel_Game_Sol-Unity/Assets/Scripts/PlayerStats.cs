@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     public Collider[] ragdollColliders; // All ragdoll colliders
     public Collider mainCollider; // Main player collider
     public Rigidbody playerRigidbody; // Reference to player's Rigidbody
+    public CameraFollow cameraFollow; // Reference to camera follow script
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerStats : MonoBehaviour
         // Disable animation and movement
         if (animator) animator.enabled = false;
         if (playerManager) playerManager.enabled = false;
+        if (cameraFollow) cameraFollow.enabled = false;
         // Stop and freeze player Rigidbody
         if (playerRigidbody)
         {
