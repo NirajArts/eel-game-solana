@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
         if (animator == null) animator = GetComponent<Animator>();
         if (animator)
         {
-            animator.SetTrigger("Run");
+            // animator.SetTrigger("Run");
         }
     }
 

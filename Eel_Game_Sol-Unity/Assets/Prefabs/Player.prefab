@@ -1219,8 +1219,9 @@ MonoBehaviour:
   - {fileID: 4967843393241326517}
   - {fileID: 954569855425868513}
   - {fileID: 3233468653585383109}
-  mainCollider: {fileID: 0}
+  mainCollider: {fileID: 472528919576474557}
   playerRigidbody: {fileID: 3635841995633486205}
+  cameraFollow: {fileID: 0}
 --- !u!1 &8457582920188311716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8620762613579571570, guid: d82909e9c1d08a5429a0cb922277ddd3, type: 3}
