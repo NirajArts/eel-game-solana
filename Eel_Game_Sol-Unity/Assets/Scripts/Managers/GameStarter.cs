@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 
 public class GameStarter : MonoBehaviour
@@ -9,7 +10,7 @@ public class GameStarter : MonoBehaviour
     private Animator playerAnimator;
     public bool allowPlay = false;
     public bool isGameStarted = false;
-    
+    private PlayerStats playerStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class GameStarter : MonoBehaviour
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         playerRigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerManager.enabled = false;
         playerRigidbody.isKinematic = true;
 
@@ -28,9 +30,15 @@ public class GameStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && allowPlay)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartGame();
+            if (allowPlay && !isGameStarted && playerStats.playerDead == false)
+                StartGame();
+
+            else
+            {
+                Debug.Log("Connect Wallet to play the game.");
+            }
         }
     }
 

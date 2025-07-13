@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     public Collider mainCollider; // Main player collider
     public Rigidbody playerRigidbody; // Reference to player's Rigidbody
     public CameraFollow cameraFollow; // Reference to camera follow script
+    public bool playerDead = false; // Track if player is dead
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Die()
     {
+        playerDead = true;
         // Disable animation and movement
         if (animator) animator.enabled = false;
         if (playerManager) playerManager.enabled = false;

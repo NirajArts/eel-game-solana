@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public GameStarter gameStarter;
     public bool isGameStarted = false;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
