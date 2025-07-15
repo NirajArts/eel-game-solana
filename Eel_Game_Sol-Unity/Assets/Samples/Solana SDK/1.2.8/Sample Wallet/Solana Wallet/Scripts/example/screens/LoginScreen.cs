@@ -25,7 +25,7 @@ namespace Solana.Unity.SDK.Example
         private Button loginBtnSms;
         [SerializeField]
         private Button loginBtnXNFT;
-        [SerializeField]
+        [SerializeField] 
         private TextMeshProUGUI messageTxt;
         [SerializeField]
         private TMP_Dropdown dropdownRpcCluster;

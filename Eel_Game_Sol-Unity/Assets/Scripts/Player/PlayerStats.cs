@@ -11,6 +11,12 @@ public class PlayerStats : MonoBehaviour
     public CameraFollow cameraFollow; // Reference to camera follow script
     public bool playerDead = false; // Track if player is dead
 
+    private ScoreManager scoreManager; // Reference to ScoreManager
+
+    void Awake()
+    {
+        scoreManager = FindFirstObjectByType<ScoreManager>();
+    }
     void Start()
     {
         SetRagdollState(false);
@@ -31,6 +37,11 @@ public class PlayerStats : MonoBehaviour
         }
         // Enable ragdoll
         SetRagdollState(true);
+
+        if(scoreManager != null)
+        {
+            scoreManager.OnDeath();
+        }
     }
 
     void SetRagdollState(bool state)

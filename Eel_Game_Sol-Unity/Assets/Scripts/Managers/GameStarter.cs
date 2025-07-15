@@ -1,4 +1,3 @@
-using UnityEditor.Search;
 using UnityEngine;
 
 public class GameStarter : MonoBehaviour
@@ -14,8 +13,6 @@ public class GameStarter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        allowPlay = true;
-
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         playerRigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
