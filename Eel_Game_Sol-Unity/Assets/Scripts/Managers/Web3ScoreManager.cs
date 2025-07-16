@@ -26,6 +26,7 @@ public class Web3ScoreManager : MonoBehaviour
         // 2) Grab the wallet's public key as your on-chain account
         _playerPubkey = Web3.Account.PublicKey;
         Debug.Log($"Using on-chain account: {_playerPubkey}");
+        LogOnScreen($"Using on-chain account: {_playerPubkey}");
 
         // 3) Give a little breathing room for RPC initialization
         await UniTask.Delay(TimeSpan.FromSeconds(1));
@@ -37,8 +38,13 @@ public class Web3ScoreManager : MonoBehaviour
             byte[] raw = Convert.FromBase64String(resp.Result.Value.Data[0]);
             _currentScore = BitConverter.ToUInt32(raw, 8 + 32);
         }
-        else _currentScore = 0;
+        else
+        {
+            _currentScore = 0;
+            LogOnScreen("No score found, defaulting to 0.");
+        }
         UpdateScoreText(_currentScore);
+        LogOnScreen($"Fetched initial score: {_currentScore}");
 
         // 5) Subscribe to live updates
         await GameScoreService.SubscribeToScoreUpdatesAsync(
@@ -47,6 +53,7 @@ public class Web3ScoreManager : MonoBehaviour
             {
                 _currentScore = newScore;
                 UpdateScoreText(_currentScore);
+                LogOnScreen($"Live score update: {_currentScore}");
             }
         );
     }
@@ -65,14 +72,22 @@ public class Web3ScoreManager : MonoBehaviour
         _currentScore = newScore;
         UpdateScoreText(_currentScore);
 
+        LogOnScreen($"Submitting score: {newScore}");
         try
         {
             string txSig = await GameScoreService.SaveScoreAsync(_playerPubkey, newScore);
-            Debug.Log($"Score submitted: {newScore}, txSig: {txSig}");
+            LogOnScreen($"Score submitted: {newScore}, txSig: {txSig}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to submit score: {e.Message}");
+            LogOnScreen($"Failed to submit score: {e.Message}");
         }
+    }
+
+    private void LogOnScreen(string message)
+    {
+        if (scoreText != null)
+            scoreText.text += $"\n{message}";
+        Debug.Log(message);
     }
 }
