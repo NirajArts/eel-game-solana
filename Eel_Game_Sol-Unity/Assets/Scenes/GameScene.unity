@@ -447,11 +447,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719787620}
-  - component: {fileID: 719787625}
+  - component: {fileID: 719787626}
   - component: {fileID: 719787621}
   - component: {fileID: 719787623}
   - component: {fileID: 719787622}
   - component: {fileID: 719787624}
+  - component: {fileID: 719787625}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -486,7 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d440494f944645341ad42d3d01abee0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  web3ScoreManager: {fileID: 719787625}
 --- !u!114 &719787622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,10 +541,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 719787619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddec9df712f0b1848ac4d356d46e1ef2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7db571777791db843808143522e69303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1579410810}
+--- !u!114 &719787626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719787619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db571777791db843808143522e69303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &801487300
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,11 +603,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rpcCluster: 1
-  customRpc: 
+  customRpc: https://rpc.magicblock.app/devnet/
   webSocketsRpc: 
   autoConnectOnStartup: 1
   web3AuthWalletOptions:
-    appName: Web3Auth Sample App
+    appName: Eel_Game_Sol-Unity
     logoLight: 
     logoDark: 
     defaultLanguage: 0

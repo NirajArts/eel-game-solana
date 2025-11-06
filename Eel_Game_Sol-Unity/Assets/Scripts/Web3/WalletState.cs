@@ -6,10 +6,7 @@ public class WalletState : MonoBehaviour
 {
     public static WalletState Instance { get; private set; }
 
-    // Other scripts can read this
     public bool IsConnected { get; private set; }
-
-    // we'll cache this once we find it
     private GameStarter _gameStarter;
 
     void Awake()
@@ -25,7 +22,6 @@ public class WalletState : MonoBehaviour
             return;
         }
 
-        // maybe the GameManager already exists in this scene
         TryFindGameStarter();
     }
 
@@ -34,7 +30,6 @@ public class WalletState : MonoBehaviour
         Web3.OnLogin  += HandleLogin;
         Web3.OnLogout += HandleLogout;
 
-        // initialize from current state
         IsConnected = Web3.Wallet != null;
         UpdateGameStarterFlag();
     }
@@ -61,9 +56,7 @@ public class WalletState : MonoBehaviour
 
     private void UpdateGameStarterFlag()
     {
-        // ensure we have a reference
         if (_gameStarter == null) TryFindGameStarter();
-
         if (_gameStarter != null)
             _gameStarter.allowPlay = IsConnected;
     }
